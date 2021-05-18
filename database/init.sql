@@ -33,7 +33,7 @@ CREATE TABLE cheeses (
 
 INSERT INTO cheeses (name, description, price, organic, vegetarian) 
 VALUES 
-('Baron Bigod Brie', 'Baron Bigod is an exquisite Suffolk made, bloomy unpasteurised cows milk cheese.', 290, false, false)
-('Chabichou de Poitou', 'A traditional semi-soft, unpasteurised, natural-rinded goats cheese.', 850, false, false)
+('Baron Bigod Brie', 'Baron Bigod is an exquisite Suffolk made, bloomy unpasteurised cows milk cheese.', 290, false, false),
+('Chabichou de Poitou', 'A traditional semi-soft, unpasteurised, natural-rinded goats cheese.', 850, false, false);
 
 COMMIT;
