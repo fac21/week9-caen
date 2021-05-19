@@ -2,21 +2,43 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
-import CheeseCard from "../components/cheeseCard";
+
+import getAllProducts from "../database/model";
+
+//import CheeseCard from "../components/cheeseCard";
+
 import Layout from "../components/layout";
 import Basket from "./basket";
 
-// function cheeseBoard({ cheeses }) {
-//   return (
-//     <ul>
-//       {cheeses.map((cheese) => (
-//         <CheeseCard />
-//       ))}
-//     </ul>
-//   );
-// }
+export async function getStaticProps({ req, res }) {
+  const allProducts = await getAllProducts();
+  //console.log(allProducts);
+  const productData = JSON.stringify(allProducts);
+  //console.log(productData);
+  return {
+    props: { productData },
+  };
+}
 
-export default function Home({ cheeses }) {
+//Cheeses product data will be populated at build time by getStaticProps()
+function CheeseCard({ productData }) {
+  console.log(productData);
+  //const productsArr = JSON.parse(productData);
+  //console.log(productsArr);
+  //console.log(productsArr);
+  return (
+    <>
+      {/* {allCheeses.map((cheese) => ( */}
+      <a href="`./${productData.name}`" className={styles.card}>
+        <h2></h2>
+        <p></p>
+      </a>
+      {/* ))} */}
+    </>
+  );
+}
+
+export default function Home(productData) {
   return (
     <Layout home>
       <section className={styles.landing}>
