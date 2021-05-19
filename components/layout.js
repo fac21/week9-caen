@@ -12,14 +12,20 @@ export default function Layout({ children, home }) {
         {/* <meta name="og:title" content="{pageName}" /> */}
       </Head>
       <header className={styles.navbar}>
-        <div>
-          {/* <img src="logo" alt="logo"></img> */}
-          <img
-            className={styles.navbar_elements}
-            src="shopping-cart.svg"
-            alt="shopping cart"
-          ></img>
-        </div>
+        <Link href="/">
+          <a>
+            <img className={styles.logo} src="logo.png" alt="logo"></img>
+          </a>
+        </Link>
+        <Link href="../pages/basket">
+          <a>
+            <img
+              className={styles.navbar_elements}
+              src="shopping-cart.svg"
+              alt="shopping cart"
+            ></img>
+          </a>
+        </Link>
       </header>
       <main>{children}</main>
       {!home && (
