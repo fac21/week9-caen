@@ -13,4 +13,4 @@ const options = {
 
 const db = new pg.Pool(options);
 
-module.exports = db;
+export { db };
