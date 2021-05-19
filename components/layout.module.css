@@ -1,0 +1,10 @@
+.navbar {
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar_elements {
+  width: auto;
+  height: 7vh;
+}
