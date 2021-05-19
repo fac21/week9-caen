@@ -12,3 +12,5 @@ const options = {
 };
 
 const db = new pg.Pool(options);
+
+export { db };

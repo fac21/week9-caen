@@ -1,3 +1,21 @@
+.down_arrow {
+  height: 10vh;
+  width: auto;
+}
+
+.heading {
+  font-size: 5rem;
+}
+
+.landing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  height: 90vh;
+}
+
 .container {
   min-height: 100vh;
   padding: 0 0.5rem;
