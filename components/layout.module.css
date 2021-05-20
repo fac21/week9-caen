@@ -4,6 +4,12 @@
   justify-content: space-between;
 }
 
+.sub_navbar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
 .navbar_elements {
   width: auto;
   height: 7vh;
@@ -13,6 +19,27 @@
   width: auto;
   height: 10vh;
 }
+
+.article {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  padding: 3rem;
+}
+
+.article_div1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.article_div2 {
+  display: flex;
+  flex-direction: column;
+}
+
 .product_name {
   font-size: 2rem;
 }

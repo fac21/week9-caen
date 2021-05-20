@@ -1,9 +1,9 @@
 import Layout from "../../components/layout";
-import Head from "next/head";
 import styles from "../../components/layout.module.css";
 import { getAllProductNames } from "../../database/model";
 import { db } from "../../database/connection";
 import Link from "next/link";
+import Image from "next/image";
 
 function getCheeseData(id) {
   console.log(typeof id); //Baron Bigod Brie
@@ -42,17 +42,30 @@ export async function getStaticProps({ params }) {
 export default function Cheese({ cheeseData }) {
   return (
     <Layout>
-      <article>
-        <h1 className={styles.product_name}>{cheeseData.name}</h1>
-        <img
-          className={styles.product_image}
-          src={cheeseData.image}
-          alt={cheeseData.name}
-        ></img>
-        <p className={styles.product_description}>{cheeseData.description}</p>
-        <p className={styles.product_price}>{`£ ${(
-          cheeseData.price / 100
-        ).toFixed(2)}`}</p>
+      <article className={styles.article}>
+        <div className={styles.article_div1}>
+          <Image
+            className={styles.product_image}
+            src={`/${cheeseData.image}.jpeg`}
+            alt={cheeseData.name}
+            width="600"
+            height="500"
+          />
+        </div>
+        <div className={styles.article_div2}>
+          <h1 className={styles.product_name}>{cheeseData.name}</h1>
+          <p className={styles.product_description}>{cheeseData.description}</p>
+          <p className={styles.product_price}>£{cheeseData.price.toFixed(2)}</p>
+          <Link href="/basket">
+            <a>
+              <h3>
+                {cheeseData.add_to_basket}
+                Add to basket
+              </h3>
+            </a>
+          </Link>
+        </div>
+        <div dangerouslySetInnerHTML={{ __html: cheeseData.contentHtml }} />
       </article>
       <Link href="/basket">
         <a>
