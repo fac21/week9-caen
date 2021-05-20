@@ -12,7 +12,7 @@ export async function getStaticPaths() {
   const productNameArray = allProductNames.map((item) => {
     return { params: { id: item.name } };
   });
-  // item.name.replace(/\s/g, "%20"
+
   console.log(productNameArray);
   return {
     paths: productNameArray,
@@ -49,7 +49,11 @@ export default function Cheese({ cheeseData }) {
     <Layout>
       <article>
         <h1 className={styles.product_name}>{cheeseData.name}</h1>
-        <img className={styles.product_image}>{cheeseData.image}</img>
+        <img
+          className={styles.product_image}
+          href={cheeseData.image}
+          alt={cheeseData.name}
+        ></img>
         <p className={styles.product_description}>{cheeseData.description}</p>
         <p className={styles.product_price}>{cheeseData.price}</p>
         <Link href="/basket">
