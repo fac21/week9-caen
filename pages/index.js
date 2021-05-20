@@ -18,11 +18,18 @@ function CheeseCard({ productData }) {
   console.log(dataObject);
   return (
     <>
+      {/* src={`/assets/products/${prod.ProductName.replace(/ /g, "-")}.png`} */}
       {dataObject.map((cheese) => {
         return (
           <a href={"./products/" + cheese.name} className={layoutStyles.card}>
-            {cheese.image}
+            <Image
+              src={`/${cheese.image}.jpeg`}
+              width="200"
+              height="170"
+              alt={cheese.name}
+            />
             <h2>{cheese.name}</h2>
+            <p>See more</p>
           </a>
         );
       })}
@@ -33,9 +40,6 @@ function CheeseCard({ productData }) {
 export default function Home(productData) {
   return (
     <Layout home>
-      <Link href="/login">
-        <a>Click here login</a>
-      </Link>
       <section className={styles.landing}>
         <h1 className={styles.heading}>
           Artisinal Cheeses from Artisinal Cows
