@@ -4,7 +4,7 @@ import styles from "../styles/Home.module.css";
 import layoutStyles from "../components/layout.module.css";
 import Link from "next/link";
 
-import getAllProducts from "../database/model";
+import { getAllProducts } from "../database/model";
 
 //import CheeseCard from "../components/cheeseCard";
 
@@ -19,7 +19,7 @@ function CheeseCard({ productData }) {
     <>
       {dataObject.map((cheese) => {
         return (
-          <a href={"./" + cheese.name} className={layoutStyles.card}>
+          <a href={"./products/" + cheese.name} className={layoutStyles.card}>
             {cheese.image}
             <h2>{cheese.name}</h2>
           </a>

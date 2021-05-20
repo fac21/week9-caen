@@ -17,7 +17,7 @@ CREATE TABLE sessions (
 
 CREATE TABLE basket (
     id SERIAL PRIMARY KEY,
-    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    session_id TEXT REFERENCES sessions(sid) ON DELETE CASCADE,
     products JSON 
 );
 
