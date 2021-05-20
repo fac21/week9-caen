@@ -7,9 +7,7 @@ export default function Layout({ children, home }) {
   return (
     <div className={styles.container}>
       <Head>
-        {/* <link rel="icon" href="/favicon.ico" /> */}
         <meta name="description" content="Artisinal Cows Homepage" />
-        {/* <meta name="og:title" content="{pageName}" /> */}
       </Head>
       <header className={styles.navbar}>
         <Link href="/">
