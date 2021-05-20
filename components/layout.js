@@ -14,18 +14,25 @@ export default function Layout({ children, home }) {
       <header className={styles.navbar}>
         <Link href="/">
           <a>
-            <img className={styles.logo} src="logo.png" alt="logo"></img>
+            <img className={styles.logo} src="/logo.png" alt="logo"></img>
           </a>
         </Link>
-        <Link href="/basket">
-          <a>
-            <img
-              className={styles.navbar_elements}
-              src="shopping-cart.svg"
-              alt="shopping cart"
-            ></img>
-          </a>
-        </Link>
+        <div className={styles.sub_navbar}>
+          <Link href="/login">
+            <a>
+              <h3>Login</h3>
+            </a>
+          </Link>
+          <Link href="/basket">
+            <a>
+              <img
+                className={styles.navbar_elements}
+                src="/shopping-cart.svg"
+                alt="shopping cart"
+              ></img>
+            </a>
+          </Link>
+        </div>
       </header>
       <main>{children}</main>
       {!home && (
