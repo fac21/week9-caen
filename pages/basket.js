@@ -19,6 +19,30 @@ export default function HomePage({ data }) {
   );
 }
 
+export async function getServerSideProps({ params }) {
+  const cheeseData = await getPostData(params.id);
+  return {
+    props: {
+      cheeseData,
+    },
+  };
+}
+
+// export default function Basket({ cheeseData }) {
+//   return (
+//     <Layout>
+//       <article>
+//         Hello
+//         {/* <h1 className={styles.product_name}>{postData.name}</h1>
+//         <img className={styles.product_image}>{postData.image}</img>
+//         <p className={styles.product_description}>{postData.description}</p>
+//         <p className={styles.product_price}>{postData.price}</p>
+//         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} /> */}
+//       </article>
+//     </Layout>
+//   );
+// }
+
 HomePage.getInitialProps = async ({ req, res }) => {
   const data = parseCookies(req);
 
@@ -33,17 +57,3 @@ HomePage.getInitialProps = async ({ req, res }) => {
     data: data && data,
   };
 };
-
-// export default function Basket({ postData }) {
-//   return (
-//     <Layout>
-//       <article>
-//         {/* <h1 className={styles.product_name}>{postData.name}</h1> */}
-//         {/* <img className={styles.product_image}>{postData.image}</img>
-//         <p className={styles.product_description}>{postData.description}</p>
-//         <p className={styles.product_price}>{postData.price}</p>
-//         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} /> */}
-//       </article>
-//     </Layout>
-//   );
-// }

@@ -29,3 +29,51 @@
 .product_price {
   font-size: 1rem;
 }
+
+.product_grid {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.filter_section {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  display: flex;
+  text-align: center;
+}
+
+.cheese_cards {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.card {
+  margin: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.card:hover,
+.card:focus,
+.card:active {
+  color: #0070f3;
+  border-color: #0070f3;
+}
+
+.card h2 {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+}
+
+.card p {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
