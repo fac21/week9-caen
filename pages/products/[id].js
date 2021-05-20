@@ -5,10 +5,17 @@ import { getAllProductNames } from "../../database/model";
 import { db } from "../../database/connection";
 import Link from "next/link";
 
+function getCheeseData(id) {
+  console.log(typeof id); //Baron Bigod Brie
+  return db
+    .query(`SELECT * FROM cheeses WHERE name = ($1)`, [id])
+    .then((result) => result.rows[0]);
+}
+
 //returns an array of possible values for name
 export async function getStaticPaths() {
   const allProductNames = await getAllProductNames();
-  console.log(allProductNames); // [ { name: 'Baron Bigod Brie' }, { name: 'Chabichou de Poitou' } ]
+  console.log(allProductNames);
   const productNameArray = allProductNames.map((item) => {
     return { params: { id: item.name } };
   });
@@ -18,18 +25,6 @@ export async function getStaticPaths() {
     paths: productNameArray,
     fallback: false,
   };
-}
-
-//Error: Invalid value returned from getStaticPaths in /products/[id]. Received undefined Expected: { paths: [], fallback: boolean }
-//See here for more info: https://nextjs.org/docs/messages/invalid-getstaticpaths-value
-
-// [ { params: { id: 'pre-rendering' } }, { params: { id: 'ssg-ssr' } } ]
-
-function getCheeseData(id) {
-  console.log(typeof id); //Baron Bigod Brie
-  return db
-    .query(`SELECT * FROM cheeses WHERE name = ($1)`, [id])
-    .then((result) => result.rows[0]);
 }
 
 //fetches necessary data for the cheese with id
@@ -58,13 +53,33 @@ export default function Cheese({ cheeseData }) {
         <p className={styles.product_price}>{`£ ${(
           cheeseData.price / 100
         ).toFixed(2)}`}</p>
-        <Link href="/basket">
-          <a>
-            <p className={styles.add_to_basket}>{cheeseData.add_to_basket}</p>
-          </a>
-        </Link>
-        <div dangerouslySetInnerHTML={{ __html: cheeseData.contentHtml }} />
       </article>
+      <Link href="/basket">
+        <a>
+          <p
+            onClick={() => {
+              addToBasket(cheeseData);
+            }}
+          >
+            Add to basket
+          </p>
+        </a>
+      </Link>
+      <div dangerouslySetInnerHTML={{ __html: cheeseData.contentHtml }} />s
     </Layout>
   );
+}
+
+function addToBasket(cheeseData) {
+  //doesn't work if they have other cookies set
+  let currentCookies = document.cookie;
+  currentCookies
+    ? (currentCookies = JSON.parse(currentCookies))
+    : (currentCookies = {});
+  currentCookies[cheeseData.name]
+    ? (currentCookies[cheeseData.name] += 1)
+    : (currentCookies[cheeseData.name] = 1);
+  currentCookies = JSON.stringify(currentCookies);
+  document.cookie = currentCookies;
+  return;
 }
