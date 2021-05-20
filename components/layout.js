@@ -17,7 +17,7 @@ export default function Layout({ children, home }) {
             <img className={styles.logo} src="logo.png" alt="logo"></img>
           </a>
         </Link>
-        <Link href="../pages/basket">
+        <Link href="/basket">
           <a>
             <img
               className={styles.navbar_elements}

@@ -10,6 +10,7 @@ import { getAllProducts } from "../database/model";
 
 import Layout from "../components/layout";
 import Basket from "./basket";
+import Login from "./login";
 
 //Cheeses product data will be populated at build time by getStaticProps()
 function CheeseCard({ productData }) {
@@ -32,6 +33,9 @@ function CheeseCard({ productData }) {
 export default function Home(productData) {
   return (
     <Layout home>
+      <Link href="/login">
+        <a>Click here login</a>
+      </Link>
       <section className={styles.landing}>
         <h1 className={styles.heading}>
           Artisinal Cheeses from Artisinal Cows

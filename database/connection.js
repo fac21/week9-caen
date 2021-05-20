@@ -8,7 +8,7 @@ dotenv.config();
 if (!DB_URL) throw new Error("no database URL env var!");
 
 const options = {
-  connectionString: DB_URL,
+    connectionString: DB_URL,
 };
 
 const db = new pg.Pool(options);
