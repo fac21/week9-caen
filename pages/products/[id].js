@@ -51,11 +51,13 @@ export default function Cheese({ cheeseData }) {
         <h1 className={styles.product_name}>{cheeseData.name}</h1>
         <img
           className={styles.product_image}
-          href={cheeseData.image}
+          src={cheeseData.image}
           alt={cheeseData.name}
         ></img>
         <p className={styles.product_description}>{cheeseData.description}</p>
-        <p className={styles.product_price}>{cheeseData.price}</p>
+        <p className={styles.product_price}>{`£ ${(
+          cheeseData.price / 100
+        ).toFixed(2)}`}</p>
         <Link href="/basket">
           <a>
             <p className={styles.add_to_basket}>{cheeseData.add_to_basket}</p>
