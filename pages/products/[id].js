@@ -56,29 +56,21 @@ export default function Cheese({ cheeseData }) {
           <h1 className={styles.product_name}>{cheeseData.name}</h1>
           <p className={styles.product_description}>{cheeseData.description}</p>
           <p className={styles.product_price}>£{cheeseData.price.toFixed(2)}</p>
+
           <Link href="/basket">
             <a>
-              <h3>
-                {cheeseData.add_to_basket}
+              <h3
+                onClick={() => {
+                  addToBasket(cheeseData);
+                }}
+              >
                 Add to basket
               </h3>
             </a>
           </Link>
+          <div dangerouslySetInnerHTML={{ __html: cheeseData.contentHtml }} />
         </div>
-        <div dangerouslySetInnerHTML={{ __html: cheeseData.contentHtml }} />
       </article>
-      <Link href="/basket">
-        <a>
-          <p
-            onClick={() => {
-              addToBasket(cheeseData);
-            }}
-          >
-            Add to basket
-          </p>
-        </a>
-      </Link>
-      <div dangerouslySetInnerHTML={{ __html: cheeseData.contentHtml }} />s
     </Layout>
   );
 }
