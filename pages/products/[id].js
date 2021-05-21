@@ -88,10 +88,7 @@ export default function Cheese({ cheeseData }) {
 }
 
 function addToBasket(cheeseData) {
-  //console.log("cd", cheeseData);
-  //console.log("current cookie", document.cookie);
   //doesn't work if they have other cookies set
-  //console.log(cheeseData);
   let currentCookies = document.cookie;
   currentCookies
     ? (currentCookies = JSON.parse(currentCookies))
