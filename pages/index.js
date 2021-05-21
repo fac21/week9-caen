@@ -65,8 +65,8 @@ export default function Home(productData) {
 
       <section id="products_grid" className={layoutStyles.product_grid}>
         <div className={layoutStyles.filter_section}>
-          <fieldset>
-            <legend>Filter</legend>
+          <div className={layoutStyles.radio}>
+            <h3>Filter</h3>
             <label htmlFor="min-price">
               Min price
               <input
@@ -91,6 +91,8 @@ export default function Home(productData) {
                 onChange={(event) => setMax(event.target.value)}
               />
             </label>
+          </div>
+          <div className={layoutStyles.radio}>
             <label htmlFor="all">
               All
               <input
@@ -124,7 +126,7 @@ export default function Home(productData) {
                 onChange={(event) => setCategory(event.target.value)}
               />
             </label>
-          </fieldset>
+          </div>
         </div>
         <div className={layoutStyles.cheese_cards}>
           <CheeseCard
