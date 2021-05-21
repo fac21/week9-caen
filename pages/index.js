@@ -15,8 +15,9 @@ import Login from "./login";
 
 //Cheeses product data will be populated at build time by getStaticProps()
 function CheeseCard({ productData, min, max, category }) {
+  console.log(productData);
   const dataObject = JSON.parse(productData.productData);
-  console.log(dataObject);
+  //console.log(dataObject);
   return (
     <>
       {/* src={`/assets/products/${prod.ProductName.replace(/ /g, "-")}.png`} */}

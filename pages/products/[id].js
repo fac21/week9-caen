@@ -58,7 +58,11 @@ export default function Cheese({ cheeseData }) {
           <p className={styles.product_price}>£{cheeseData.price.toFixed(2)}</p>
           <Link href="/basket">
             <a>
-              <h3>
+              <h3
+                onClick={() => {
+                  addToBasket(cheeseData);
+                }}
+              >
                 {cheeseData.add_to_basket}
                 Add to basket
               </h3>
@@ -78,13 +82,16 @@ export default function Cheese({ cheeseData }) {
           </p>
         </a>
       </Link>
-      <div dangerouslySetInnerHTML={{ __html: cheeseData.contentHtml }} />s
+      <div dangerouslySetInnerHTML={{ __html: cheeseData.contentHtml }} />
     </Layout>
   );
 }
 
 function addToBasket(cheeseData) {
+  //console.log("cd", cheeseData);
+  //console.log("current cookie", document.cookie);
   //doesn't work if they have other cookies set
+  //console.log(cheeseData);
   let currentCookies = document.cookie;
   currentCookies
     ? (currentCookies = JSON.parse(currentCookies))
